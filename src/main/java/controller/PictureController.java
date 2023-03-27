@@ -2,7 +2,6 @@ package controller;
 
 
 import model.Picture;
-import model.PictureForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,29 +29,26 @@ public class PictureController {
     }
     @GetMapping("/create")
     public String showCreateForm(Model model){
-        PictureForm p = new PictureForm();
+        Picture p = new Picture();
         p.setId((int) (Math.random()*99999));
         model.addAttribute("picture", p);
         return "/create";
     }
     @PostMapping("/save")
-    public String save(@ModelAttribute PictureForm pictureForm){
-        MultipartFile multipartFile = pictureForm.getPicture();
+    public String save(@ModelAttribute Picture picture,@RequestParam(name="img") MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();
         try {
-            FileCopyUtils.copy(pictureForm.getPicture().getBytes(), new File(fileUpload + fileName));
+            FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpload + fileName));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Picture picture = new Picture(pictureForm.getId(),pictureForm.getCode(),pictureForm.getHeight(), pictureForm.getWidth(),pictureForm.getMaterial(),pictureForm.getDescription(), pictureForm.getPrice(),fileName);
+        picture.setPicture(fileName);
         services.save(picture);
         return "redirect:/picture";
     }
     @GetMapping("/edit/{id}")
     public String showEditForm(Model model, @PathVariable int id){
         Picture p=services.show1(id);
-        File file=new File(fileUpload+p.getPicture());
-        PictureForm pictureForm = new PictureForm(p.getId(),p.getCode(),p.getHeight(),p.getWidth(), p.getMaterial(), p.getDescription(), p.getPrice());
         model.addAttribute("picture",p);
         return "/update";
     }

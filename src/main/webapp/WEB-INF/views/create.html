@@ -31,7 +31,10 @@
         </div>
         <div class="mb-3">
             <label for="picture" class="form-label">Picture</label>
-            <input type="file" class="form-control" id="picture" th:field="*{picture}">
+            <div th:if="${picture.picture!=null}">
+                <img width="100" height="100" th:src="@{'/image/' + ${picture.picture}}" alt="">
+            </div>
+            <input type="file" class="form-control" id="picture" name="img">
         </div>
         <input type="hidden" class="form-control" th:field="*{id}">
         <button type="submit" class="btn btn-primary">Submit</button>
