@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: header('show picture '+ ${picture.id})">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form action="/picture/" method="get">
+        <button type="submit" class="btn btn-primary">Back to Index</button>
+    </form>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Code</th>
+            <th scope="col">Height</th>
+            <th scope="col">Width</th>
+            <th scope="col">Material</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" th:text="${picture.id}"></th>
+            <td th:text="${picture.code}"></td>
+            <td th:text="${picture.height}"></td>
+            <td th:text="${picture.width}"></td>
+            <td th:text="${picture.material}"></td>
+            <td th:text="${picture.description}"></td>
+            <td th:text="${picture.price}"></td>
+            <td ><a th:href="@{/picture/edit/{id}(id=${picture.id})}">Edit</a></td>
+            <td ><a th:href="@{/picture/delete/{id}(id=${picture.id})}">Delete</a></td>
+            <td ><a th:href="@{/picture/view/{id}(id=${picture.id})}">View</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

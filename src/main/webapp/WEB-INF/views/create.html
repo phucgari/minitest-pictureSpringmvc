@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: header('Create new Picture')">
+</head>
+<body>
+<div class="container" th:fragment="editCreateProduct">
+    <form action="/picture/save" method="post" th:object="${picture}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Code</label>
+            <input type="text" class="form-control" id="name" th:field="*{code}">
+        </div>
+        <div class="mb-3">
+            <label for="height" class="form-label">Height</label>
+            <input type="number" class="form-control" id="height" th:field="*{height}">
+        </div>
+        <div class="mb-3">
+            <label for="width" class="form-label">Width</label>
+            <input type="number" class="form-control" id="width" th:field="*{width}">
+        </div>
+        <div class="mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input type="text" class="form-control" id="material" th:field="*{material}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" th:field="*{price}">
+        </div>
+        <input type="hidden" class="form-control" th:field="*{id}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
