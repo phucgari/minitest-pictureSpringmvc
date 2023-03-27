@@ -4,7 +4,7 @@
 </head>
 <body>
 <div class="container" th:fragment="editCreateProduct">
-    <form action="/picture/save" method="post" th:object="${picture}">
+    <form action="/picture/save" method="post" th:object="${picture}" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">Code</label>
             <input type="text" class="form-control" id="name" th:field="*{code}">
@@ -28,6 +28,10 @@
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input type="text" class="form-control" id="price" th:field="*{price}">
+        </div>
+        <div class="mb-3">
+            <label for="picture" class="form-label">Picture</label>
+            <input type="file" class="form-control" id="picture" th:field="*{picture}">
         </div>
         <input type="hidden" class="form-control" th:field="*{id}">
         <button type="submit" class="btn btn-primary">Submit</button>

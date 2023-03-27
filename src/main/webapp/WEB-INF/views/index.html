@@ -35,6 +35,7 @@
             <td th:text="${picture.material}"></td>
             <td th:text="${picture.description}"></td>
             <td th:text="${picture.price}"></td>
+            <td><img width="100" height="100" th:src="@{'/image/' + ${picture.picture}}" alt=""></td>
             <td ><a th:href="@{/picture/edit/{id}(id=${picture.id})}">Edit</a></td>
             <td ><a th:href="@{/picture/delete/{id}(id=${picture.id})}">Delete</a></td>
             <td ><a th:href="@{/picture/view/{id}(id=${picture.id})}">View</a></td>

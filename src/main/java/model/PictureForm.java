@@ -1,6 +1,8 @@
 package model;
 
-public class Picture {
+import org.springframework.web.multipart.MultipartFile;
+
+public class PictureForm {
     int id;
     String code;
     int height;
@@ -8,11 +10,11 @@ public class Picture {
     String material;
     String description;
     int price;
-    String picture;
-    public Picture() {
+    MultipartFile picture;
+    public PictureForm() {
     }
 
-    public Picture(int id, String code, int height, int width, String material, String description, int price, String picture) {
+    public PictureForm(int id, String code, int height, int width, String material, String description, int price, MultipartFile picture) {
         this.id = id;
         this.code = code;
         this.height = height;
@@ -23,7 +25,7 @@ public class Picture {
         this.picture = picture;
     }
 
-    public Picture(int id, String code, int height, int width, String material, String description, int price) {
+    public PictureForm(int id, String code, int height, int width, String material, String description, int price) {
         this.id = id;
         this.code = code;
         this.height = height;
@@ -33,12 +35,11 @@ public class Picture {
         this.price = price;
     }
 
-
-    public String getPicture() {
+    public MultipartFile getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(MultipartFile picture) {
         this.picture = picture;
     }
 
